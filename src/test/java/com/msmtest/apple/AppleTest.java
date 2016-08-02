@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class AppleTest {
 
-	private Colour colour;
+	private Colour colour = Colour.GREEN;
 	private int weight = 10;
 	private int taste = 4;
 	private boolean hasWorm = false;
@@ -19,6 +19,23 @@ public class AppleTest {
 		apple = new Apple(colour, weight, taste, hasWorm);
 	}
 
+	@Test
+	public void canCreateRedApple() {
+		apple = new Apple(Colour.RED, weight, taste, hasWorm);
+		assertEquals(Colour.RED, apple.getColour());
+	}
+	
+	@Test
+	public void canCreateBlueApple() {
+		apple = new Apple(Colour.BLUE, weight, taste, hasWorm);
+		assertEquals(Colour.BLUE, apple.getColour());
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldNotAllowIllegalValueForColour(){
+		apple = new Apple(null, weight, taste, hasWorm);
+	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void shouldNotAllowIllegalValueForTaste_1(){
 		apple = new Apple(colour, weight, 5, hasWorm);
@@ -40,8 +57,9 @@ public class AppleTest {
 	}
 	
 	@Test
-	public void appleHasAColour() {
-		assertEquals(colour, apple.getColour());
+	public void canCreateAGreenApple() {
+		apple = new Apple(Colour.GREEN, weight, taste, hasWorm);
+		assertEquals(Colour.GREEN, apple.getColour());
 	}
 
 	@Test

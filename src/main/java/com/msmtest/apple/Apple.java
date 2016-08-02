@@ -7,10 +7,15 @@ public class Apple {
 	final private int taste;
 	final private boolean hasWorm;
 	
-	public Apple(Colour colour, int weight, int taste, boolean hasWorm) {
-		this.colour = colour;		
+	public Apple(Colour colour, int weight, int taste, boolean hasWorm) {				
 		this.hasWorm = hasWorm;
 		
+		if(isAValidColour(colour)){
+			this.colour = colour;	
+		}else{
+			throw new IllegalArgumentException("Colour can't be NULL");
+		}
+				
 		if(isWeightValid(weight)){
 			this.weight = weight;
 		}else{
@@ -22,6 +27,13 @@ public class Apple {
 		}else{
 			throw new IllegalArgumentException(String.format("Taste field can only contain 1, 2, 3, or 4. Illegal value %s was passed.", taste));
 		}
+	}
+
+	private boolean isAValidColour(Colour colour) {
+		if(colour == null){
+			return false;
+		}
+		return true;
 	}
 
 	private boolean isWeightValid(int weight) {
