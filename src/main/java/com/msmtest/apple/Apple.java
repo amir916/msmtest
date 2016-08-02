@@ -88,6 +88,9 @@ public class Apple {
 	}
 
 	public void eat() {
+		if(!isPeeled()){
+			peel();
+		}
 		status = Status.EATEN;
 	}
 

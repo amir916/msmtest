@@ -2,8 +2,11 @@ package com.msmtest.apple;
 
 import static org.junit.Assert.*;
 
+import static org.mockito.Mockito.*; 
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class AppleTest {
 
@@ -87,6 +90,19 @@ public class AppleTest {
 	@Test
 	public void appleCanBeEaten(){
 		apple.eat();
+		assertTrue(apple.isEaten());
+	}
+	
+	@Test
+	public void shouldPeelTheAppleBeforeEating(){
+		//GIVEN
+		Apple apple = Mockito.spy(new Apple(colour, weight, taste, hasWorm));
+		
+		//WHEN
+		apple.eat();
+		
+		//THEN
+		verify(apple, times(1)).peel();
 		assertTrue(apple.isEaten());
 	}
 }
