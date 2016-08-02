@@ -77,4 +77,16 @@ public class AppleTest {
 	public void hasAppleGotAWorm() {
 		assertEquals(hasWorm, apple.hasWorm());
 	}
+	
+	@Test
+	public void appleCanBePeeled(){
+		apple.peel();
+		assertTrue(apple.isPeeled());
+	}
+	
+	@Test
+	public void appleCanBeEaten(){
+		apple.eat();
+		assertTrue(apple.isEaten());
+	}
 }
