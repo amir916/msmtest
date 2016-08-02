@@ -28,6 +28,16 @@ public class AppleTest {
 	public void shouldNotAllowIllegalValueForTaste_2(){
 		apple = new Apple(colour, weight, 0, hasWorm);
 	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldNotAllowIllegalValueForWeight_1(){
+		apple = new Apple(colour, 9, taste, hasWorm);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldNotAllowIllegalValueForWeight_2(){
+		apple = new Apple(colour, 101, taste, hasWorm);
+	}
 	
 	@Test
 	public void appleHasAColour() {
