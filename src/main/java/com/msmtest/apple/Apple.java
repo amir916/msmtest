@@ -77,7 +77,15 @@ public class Apple {
 	}
 
 	public void peel() {
-		status = Status.PEELED;
+		if(canPeel()){
+			status = Status.PEELED;
+		}else{
+			throw new IllegalStateException(String.format("Appel can't be peeled. Taste = %s, hasWorm = %s.", taste, hasWorm));
+		}		
+	}
+
+	private boolean canPeel() {
+		return ((taste > 3) && !hasWorm);
 	}
 
 	public boolean isPeeled() {

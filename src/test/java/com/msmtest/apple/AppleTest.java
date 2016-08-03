@@ -105,4 +105,24 @@ public class AppleTest {
 		verify(apple, times(1)).peel();
 		assertTrue(apple.isEaten());
 	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void shouldNotBeAbleToPeelWhenTasteIsLessThan4(){
+		//GIVEN
+		apple = new Apple(colour, weight, 3, false);
+		
+		//WHEN
+		//THEN
+		apple.peel();
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void shouldNotBeAbleToPeelWhenAppleHasAWorm(){
+		//GIVEN
+		apple = new Apple(colour, weight, 4, true);
+		
+		//WHEN
+		//THEN
+		apple.peel();
+	}
 }
